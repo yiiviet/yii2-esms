@@ -27,7 +27,9 @@ class RequestData extends BaseRequestData
     public function rules()
     {
         return [
-            [['ApiKey', 'SecretKey'], 'required'],
+            [['ApiKey', 'SecretKey'], 'required', 'on' => [
+                Gateway::RC_SEND_VOICE, Gateway::RC_SEND_SMS, Gateway::RC_GET_SEND_STATUS, Gateway::RC_GET_RECEIVER_STATUS
+            ]],
             [['Phone'], 'required', 'on' => [Gateway::RC_SEND_VOICE, Gateway::RC_SEND_SMS]],
             [['SmsType', 'Content'], 'required', 'on' => Gateway::RC_SEND_SMS],
             [['ApiCode', 'PassCode'], 'required', 'on' => Gateway::RC_SEND_VOICE],
@@ -47,7 +49,7 @@ class RequestData extends BaseRequestData
         }
 
         if ($command === Gateway::RC_SEND_SMS) {
-            $attributes['SmsType'] = $attributes['SmsType'] ?? 7;
+            $attributes['SmsType'] = $attributes['SmsType'] ?? 4;
             $attributes['IsUnicode'] = $attributes['IsUnicode'] ?? 1;
             $attributes['Sandbox'] = $attributes['IsUnicode'] ?? 0;
 

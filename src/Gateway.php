@@ -8,7 +8,7 @@
 
 namespace yiiviet\esms;
 
-use vxm\gatewayclients\RequestData;
+use vxm\gatewayclients\RequestData as BaseRequestData;
 use vxm\gatewayclients\BaseGateway;
 use vxm\gatewayclients\DataInterface;
 
@@ -282,7 +282,7 @@ class Gateway extends BaseGateway
      * @inheritdoc
      * @throws \yii\base\InvalidConfigException
      */
-    protected function requestInternal(RequestData $requestData, HttpClient $httpClient): array
+    protected function requestInternal(BaseRequestData $requestData, HttpClient $httpClient): array
     {
         /** @var Client $client */
         $client = $requestData->getClient();
@@ -290,7 +290,7 @@ class Gateway extends BaseGateway
         $commandUrls = [
             self::RC_GET_BALANCE => self::BALANCE_URL,
             self::RC_GET_SEND_STATUS => self::GET_SEND_STATUS_URL,
-            self::RC_GET_RECEIVER_STATUS => self::RC_GET_RECEIVER_STATUS,
+            self::RC_GET_RECEIVER_STATUS => self::GET_RECEIVER_STATUS_URL,
             self::RC_SEND_SMS => self::SEND_SMS_URL,
             self::RC_SEND_VOICE => '',
         ];
