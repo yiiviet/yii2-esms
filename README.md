@@ -14,7 +14,6 @@ vào hệ thống của bạn.
 
 ## Yêu cầu
 * [PHP >= 7.1](http://php.net)
-* [PHP Extension: cURL](http://pear.php.net)
 * [vxm/gateway-clients >= 1.0.9](https://github.com/vuongxuongminh/yii2-gateway-clients)
 
 ## Cài đặt
