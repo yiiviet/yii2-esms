@@ -29,7 +29,7 @@ class RequestData extends BaseRequestData
         return [
             [['ApiKey', 'SecretKey'], 'required'],
             [['Phone'], 'required', 'on' => [Gateway::RC_SEND_VOICE, Gateway::RC_SEND_SMS]],
-            [['SmsType'], 'required', 'on' => Gateway::RC_SEND_SMS],
+            [['SmsType', 'Content'], 'required', 'on' => Gateway::RC_SEND_SMS],
             [['ApiCode', 'PassCode'], 'required', 'on' => Gateway::RC_SEND_VOICE],
             [['RefId'], 'required', 'on' => [Gateway::RC_GET_SEND_STATUS, Gateway::RC_GET_RECEIVER_STATUS]]
         ];
@@ -50,6 +50,10 @@ class RequestData extends BaseRequestData
             $attributes['SmsType'] = $attributes['SmsType'] ?? 7;
             $attributes['IsUnicode'] = $attributes['IsUnicode'] ?? 1;
             $attributes['Sandbox'] = $attributes['IsUnicode'] ?? 0;
+
+            if ($attributes['SmsType'] === 1 or $attributes['SmsType'] === 2) {
+                $this->addRule(['Brandname'], 'required');
+            }
         }
 
         parent::ensureAttributes($attributes);
