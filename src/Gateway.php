@@ -8,12 +8,13 @@
 
 namespace yiiviet\esms;
 
+use yii\httpclient\Client as HttpClient;
+
 use vxm\gatewayclients\RequestData as BaseRequestData;
 use vxm\gatewayclients\BaseGateway;
 use vxm\gatewayclients\DataInterface;
-
 use vxm\gatewayclients\RequestEvent;
-use yii\httpclient\Client as HttpClient;
+
 
 /**
  * Lớp Gateway kế thừa và thực thi [[\\vxm\\gatewayclients\\BaseGateway]] cung cấp các phương thức hổ trợ giao tiếp với eSMS
