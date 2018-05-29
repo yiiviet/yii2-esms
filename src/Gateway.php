@@ -50,6 +50,11 @@ class Gateway extends BaseGateway
     const RC_GET_RECEIVER_STATUS = 'getReceiverStatus';
 
     /**
+     * API endpoint dùng để lấy số dư.
+     */
+    const BALANCE_URL = 'GetBalance';
+
+    /**
      * API endpoint dùng để gửi sms.
      */
     const SEND_SMS_URL = 'SendMultipleMessage_V4_get';
@@ -283,22 +288,24 @@ class Gateway extends BaseGateway
         $client = $requestData->getClient();
         $command = $requestData->getCommand();
         $commandUrls = [
-            self::RC_GET_BALANCE => "{$client->apiKey}/{$client->secretKey}",
+            self::RC_GET_BALANCE => self::BALANCE_URL,
             self::RC_GET_SEND_STATUS => self::GET_SEND_STATUS_URL,
             self::RC_GET_RECEIVER_STATUS => self::RC_GET_RECEIVER_STATUS,
             self::RC_SEND_SMS => self::SEND_SMS_URL,
             self::RC_SEND_VOICE => '',
         ];
         $url = $commandUrls[$command];
-        $data = $requestData->get();
-        $data[0] = $url;
         $baseUrl = $httpClient->baseUrl;
 
         if ($command === self::RC_SEND_VOICE) {
             $httpClient->baseUrl = self::SEND_VOICE_FULL_URL;
+        } elseif ($command === self::RC_GET_BALANCE) {
+            $url .= "/{$client->apiKey}/{$client->secretKey}";
         }
 
-        $responseData = $httpClient->get($url)->send()->getData();
+        $data = $requestData->get();
+        $data[0] = $url;
+        $responseData = $httpClient->get($data)->send()->getData();
         $httpClient->baseUrl = $baseUrl;
 
         return $responseData;
