@@ -54,7 +54,7 @@ class RequestData extends BaseRequestData
             $attributes['Sandbox'] = $attributes['IsUnicode'] ?? 0;
 
             if ($attributes['SmsType'] === 1 || $attributes['SmsType'] === 2) {
-                $this->addRule(['Brandname'], 'required');
+                $this->addRule(['Brandname'], 'required', ['on' => $command]);
             }
         }
 
