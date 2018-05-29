@@ -122,7 +122,7 @@ Sau khi thiết lập xong ngay lập tức bạn đã có thể giao tiếp v�
     $result = Yii::$app->eSMS->getReceiverStatus($SMSID);
     
     if ($result->isOk) {
-        Yii::info('Sent: ' . $result->SentSuccess);
+        Yii::info('Sent: ' . var_export($result->ReceiverList, true));
     } else {
         Yii::warning($result->message);
     }
