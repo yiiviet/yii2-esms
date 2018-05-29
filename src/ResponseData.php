@@ -41,7 +41,7 @@ class ResponseData extends BaseResponseData
      */
     public function getIsOk(): bool
     {
-        return (bool)$this->getCode();
+        return $this->getCode() === 100;
     }
 
     /**

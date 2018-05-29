@@ -47,23 +47,13 @@ class ESMSTest extends TestCase
     public function testGetSendStatus()
     {
         $data = $this->eSMS->getSendStatus('b4ce9ecf-d7e1-4878-ab16-5ed696de090312');
-
-        if ($this->isConstantsTestDefined()) {
-            $this->assertTrue($data->isOk);
-        } else {
-            $this->assertFalse($data->isOk);
-        }
+        $this->assertFalse($data->isOk);
     }
 
     public function testGetReceiverStatus()
     {
         $data = $this->eSMS->getReceiverStatus('b4ce9ecf-d7e1-4878-ab16-5ed696de090312');
-
-        if ($this->isConstantsTestDefined()) {
-            $this->assertTrue($data->isOk);
-        } else {
-            $this->assertFalse($data->isOk);
-        }
+        $this->assertFalse($data->isOk);
     }
 
     public function testSendVoiceCall()
