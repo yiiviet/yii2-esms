@@ -14,7 +14,7 @@ vào hệ thống của bạn.
 
 ## Yêu cầu
 * [PHP >= 7.1](http://php.net)
-* [vxm/gateway-clients >= 2.0.0](https://github.com/vuongxuongminh/yii2-gateway-clients)
+* [vxm/yii2-gateway-clients >= 2.0.0](https://github.com/vuongxuongminh/yii2-gateway-clients)
 
 ## Cài đặt
 
