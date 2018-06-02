@@ -10,9 +10,10 @@ namespace yiiviet\esms;
 
 use yii\httpclient\Client as HttpClient;
 
+use GatewayClients\DataInterface;
+
 use vxm\gatewayclients\RequestData as BaseRequestData;
 use vxm\gatewayclients\BaseGateway;
-use vxm\gatewayclients\DataInterface;
 use vxm\gatewayclients\RequestEvent;
 
 
