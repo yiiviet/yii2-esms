@@ -51,7 +51,7 @@ class RequestData extends BaseRequestData
         if ($command === Gateway::RC_SEND_SMS) {
             $attributes['SmsType'] = $attributes['SmsType'] ?? 4;
             $attributes['IsUnicode'] = $attributes['IsUnicode'] ?? 1;
-            $attributes['Sandbox'] = $attributes['IsUnicode'] ?? 0;
+            $attributes['Sandbox'] = $attributes['Sandbox'] ?? 0;
 
             if ($attributes['SmsType'] === 1 || $attributes['SmsType'] === 2) {
                 $this->addRule(['Brandname'], 'required', ['on' => $command]);
